@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="CeuEscuro.adm.Site1" %>
 
 <!DOCTYPE html>
-
+<!--Masterpage é infos de cabeçalho e rodapé, que as outras paginas herdam quando abrem-->
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
