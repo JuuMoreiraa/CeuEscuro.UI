@@ -17,8 +17,10 @@ namespace CeuEscuro.adm
         //pageLoad
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtIdUsuario.Enabled = false;
             //Encapsulamento
             Populargv1();
+            PopularDDL1();
         } 
 
         //popular gv1
@@ -27,7 +29,12 @@ namespace CeuEscuro.adm
             gv1.DataSource = objBLL.GetUsersAll();
             //imprime os dados na tela
             gv1.DataBind();
+        }
 
+        public void PopularDDL1()
+        {
+            ddl1.DataSource = objBLL.LoadDropListUs();
+            ddl1.DataBind();
         }
     }
 }
