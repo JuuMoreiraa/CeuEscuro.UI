@@ -11,7 +11,8 @@ namespace CeuEscuro.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblSession.Text = $"Seja bem vindo {Session["Usuario"].ToString().ToUpper()} sua sessão inicia às {DateTime.Now.ToString("t")}";
+            //Response.AppendHeader("Refresh", String.Concat((Session.Timeout * 10), ";URL=../Login.aspx"));
         }
     }
 }

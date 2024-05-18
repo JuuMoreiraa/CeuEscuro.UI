@@ -11,7 +11,7 @@ namespace CeuEscuro
 {
 
 
-    public partial class WebForm1
+    public partial class Login
     {
 
         /// <summary>
@@ -60,12 +60,12 @@ namespace CeuEscuro
         protected global::System.Web.UI.WebControls.Button btnCancelar;
 
         /// <summary>
-        /// Controle lblMessage.
+        /// Controle lblMessagem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.Label lblMessagem;
     }
 }

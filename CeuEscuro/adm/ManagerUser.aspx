@@ -38,26 +38,22 @@
         </li>
 
         <li>
-            <%-- Record -> Salvar/Gravar --%>
-            <asp:Button ID="btnRecord" runat="server" Text="Record" />
-            <asp:Button ID="btnClear" runat="server" Text="Clear" />
-            <asp:Button ID="btnDelete" OnClientClick="if(!confirm('Deseja realmente excluir registro?')) return false" runat="server" Text="Delete" />
+            <asp:Button ID="btnRecord" runat="server" Text="Record" OnClick="btnRecord_Click"/>
+            <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
+            <asp:Button ID="btnDelete" OnClick="btnDelete_Click" OnClientClick="if(!confirm('Deseja realmente excluir este registro?'))return false" runat="server" Text="Delete" />
         </li>
-
         <li>
-            <asp:TextBox ID="txtSearch" placeholder="Search by name" runat="server"></asp:TextBox>
-            <asp:Button ID="btnSearch" runat="server" Text="Search" />
+            <asp:TextBox ID="txtSearch" placeHolder="Buscar pelo name:" runat="server"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" Text="Search"  OnClick="btnSearch_Click"/>
             <asp:Label ID="lblSearch" runat="server" Text=""></asp:Label>
         </li>
-
     </ul>
-
     <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
 
-    <%-- GridView --%>
-    <asp:GridView ID="gv1" runat="server" AutoGenerateColumns="false">
+    <%--gridView--%>
+    <asp:GridView ID="gv1" OnSelectedIndexChanged="gv1_SelectedIndexChanged" runat="server" AutoGenerateColumns="false">
         <Columns>
-            <asp:CommandField ShowSelectButton="true" ButtonType="Button" HeaderText="Options" />
+            <asp:CommandField ShowSelectButton="true" ButtonType="Button" HeaderText="Options"/>
             <asp:BoundField DataField="IdUsuario" HeaderText="Código" />
             <asp:BoundField DataField="NomeUsuario" HeaderText="Nome" />
             <asp:BoundField DataField="EmailUsuario" HeaderText="Email" />

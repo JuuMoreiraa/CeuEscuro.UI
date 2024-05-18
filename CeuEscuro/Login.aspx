@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CeuEscuro.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CeuEscuro.Login" %>
 
 <!DOCTYPE html>
 
@@ -26,7 +26,7 @@
                 </li>
 
                 <li>
-                    <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblMessagem" runat="server" Text=""></asp:Label>
                 </li>
             </ul>
         </div>

@@ -1,20 +1,19 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="CeuEscuro.adm.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DefaultAdm.master.cs" Inherits="CeuEscuro.adm.DefaultAdm" %>
 
 <!DOCTYPE html>
 <!--Masterpage é infos de cabeçalho e rodapé, que as outras paginas herdam quando abrem-->
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+        <asp:Label ID="lblSession" runat="server" Text=""></asp:Label>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
 
     <%-- CDN's --%>

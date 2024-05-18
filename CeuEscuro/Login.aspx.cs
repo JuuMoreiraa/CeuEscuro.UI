@@ -9,33 +9,42 @@ using System.Web.UI.WebControls;
 
 namespace CeuEscuro
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         UsuarioDTO usuario = new UsuarioDTO();
         UsuarioBLL usuarioBLL = new UsuarioBLL();
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
+        //entrar
         protected void btnEntrar_Click(object sender, EventArgs e)
         {
-            //Trim tira os espaços antes e depois do dado a ser pego
             string nome = txtNomeUsuario.Text.Trim();
             string senha = txtSenhaUsuario.Text.Trim();
 
             usuario = usuarioBLL.AutenticarUsuario(nome, senha);
 
-            if (usuario != null) 
+            if (usuario != null)
             {
-                lblMessage.Text = $"Usuário {usuario.NomeUsuario} seu acesso foi liberado!!";
+                switch (usuario.TipoUsuario_Id)
+                {
+                    case "1":
+                        Session["Usuario"] = usuario.NomeUsuario.Trim();
+                        Response.Redirect("adm/ManagerUser.aspx");
+                        break;
+                    case "2":
+                        Session["Usuario"] = usuario.NomeUsuario.Trim();
+                        Response.Redirect("user/ConsultaUser.aspx");
+                        break;
+                }
+            }
+            else
+            {
+                lblMessagem.Text = $"Usuário {txtNomeUsuario.Text.Trim()} não cadastrado";
+                txtNomeUsuario.Text = string.Empty;
+            }
 
-            }
-            else 
-            {
-                lblMessage.Text = $"Usuário {nome} não cadastrado";
-            }
         }
     }
 }

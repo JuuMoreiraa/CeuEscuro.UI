@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace CeuEscuro.BLL
 {
-    internal class Session
+    public static class Session
     {
+        private static string _nomeUsuario;
+        public static string nomeUsuario
+        {
+            get { return _nomeUsuario; }
+            set { _nomeUsuario = value; }
+        }
     }
 }
