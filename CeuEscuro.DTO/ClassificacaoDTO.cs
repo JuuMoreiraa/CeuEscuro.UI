@@ -8,5 +8,7 @@ namespace CeuEscuro.DTO
 {
     public class ClassificacaoDTO
     {
+        public int IdClassificacao { get; set; }
+        public string DescricaoClassificacao { get; set; }
     }
 }

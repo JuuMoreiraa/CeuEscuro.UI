@@ -183,5 +183,95 @@ namespace CeuEscuro.DAL
                 Desconectar();
             }
         }
+
+        //Load DDL Classif
+        public List<ClassificacaoDTO> LoadDDLClassif()
+        {
+            try
+            {
+                Conectar();
+                cmd = new SqlCommand("SELECT * FROM Classificacao;", conn);
+                dr = cmd.ExecuteReader();
+                List<ClassificacaoDTO> Lista = new List<ClassificacaoDTO>(); //Lista Vazia para receber os dados
+                while (dr.Read())
+                {
+                    ClassificacaoDTO classificacao = new ClassificacaoDTO();
+                    classificacao.IdClassificacao = Convert.ToInt32(dr["IdClassificacao"]);
+                    classificacao.DescricaoClassificacao = Convert.ToString(dr["DescricaoClassificacao"]);
+                    Lista.Add(classificacao);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
+
+        //Load DDL Genero
+        public List<GeneroDTO> LoadDDLGenero()
+        {
+            try
+            {
+                Conectar();
+                cmd = new SqlCommand("SELECT * FROM Genero;", conn);
+                dr = cmd.ExecuteReader();
+                List<GeneroDTO> Lista = new List<GeneroDTO>(); //Lista Vazia para receber os dados
+                while (dr.Read())
+                {
+                    GeneroDTO genero = new GeneroDTO();
+                    genero.IdGenero = Convert.ToInt32(dr["IdGenero"]);
+                    genero.DescricaoGenero = Convert.ToString(dr["DescricaoGenero"]);
+                    Lista.Add(genero);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
+
+        //Filter by Genre
+        public List<FilmDTO> Filter(string generoFilme)
+        {
+            try
+            {
+                Conectar();
+                //Inner Join = Trazer dados em comum entre tabelas interligadas
+                cmd = new SqlCommand("SELECT IdFilm, TituloFilm, ProdutoraFilm, UrlImgFilm, DescricaoClassificacao, DescricaoGenero FROM Film INNER JOIN Classificacao ON Classifcacao_Id = IdCLassificacao INNER JOIN Genero ON Genero_Id = IdGenero WHERE DescricaoGenero = @DescricaoGenero;", conn);
+                cmd.Parameters.AddWithValue("@DescricaoGenero", generoFilme);
+                dr = cmd.ExecuteReader();
+                List<FilmDTO> Lista = new List<FilmDTO>(); //Lista Vazia para receber os dados
+                while (dr.Read())
+                {
+                    FilmDTO film = new FilmDTO();
+                    film.IdFilm = Convert.ToInt32(dr["IdFilm"]);
+                    film.TituloFilm = Convert.ToString(dr["TituloFilm"]);
+                    film.ProdutoraFilm = Convert.ToString(dr["ProdutoraFilm"]);
+                    film.UrlImgFilm = Convert.ToString(dr["UrlImgFilm"]);
+                    film.Classifcacao_Id = Convert.ToString(dr["DescricaoClassificacao"]);
+                    film.Genero_Id = Convert.ToString(dr["DescricaoGenero"]);
+                    Lista.Add(film);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
     }
 }

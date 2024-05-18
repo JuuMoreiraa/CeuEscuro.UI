@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CeuEscuro.DTO
 {
-    internal class GeneroDTO
+    public class GeneroDTO
     {
+        public int IdGenero { get; set; }
+        public string DescricaoGenero { get; set; }
+
     }
 }
